@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="750.0" prefWidth="1280.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+    <top>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" spacing="20.0" style="-fx-background-color: #8000ff;">
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+               <children>
+                  <Label styleClass="top-bar-label" text="Hotline: 1800-xxxx" />
+                  <Label styleClass="top-bar-label" text="Find a Store" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" style="-fx-background-color: #bf00ff; -fx-padding: 0 20 0 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+               <children>
+                  <ImageView fx:id="logoImageView" fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo_shop_main.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="searchTextField" prefWidth="400.0" promptText="Search for products, categories..." styleClass="main-search-field" HBox.hgrow="SOMETIMES" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" styleClass="main-search-button" text="Search" />
+                  <javafx.scene.layout.Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="orderHistoryNavButton" mnemonicParsing="false" onAction="#handleOrderHistory" styleClass="nav-text-button" text="Order History">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image><Image url="@../images/icon_history.png" /></image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="cartNavButton" mnemonicParsing="false" onAction="#handleViewCart" styleClass="nav-text-button" text="Cart">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image><Image url="@../images/icon_cart.png" /></image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <MenuButton fx:id="userProfileMenuButton" mnemonicParsing="false" styleClass="nav-text-button" text="Account">
+                      <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image><Image url="@../images/icon_user_profile.png" /></image>
+                        </ImageView>
+                     </graphic>
+                    <items>
+                      <MenuItem onAction="#handleMyAccount" text="My Profile" />
+                      <MenuItem onAction="#handleLogout" text="Logout" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <HBox fx:id="categoryNavBar" alignment="CENTER_LEFT" prefHeight="45.0" spacing="15.0" style="-fx-background-color: #FAFAFA; -fx-padding: 0 30 0 30; -fx-border-width: 0 0 1 0; -fx-border-color: #e0e0e0;">
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="All Products" userData="All Products" />
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="Электроника" userData="Электроника" />
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="Аксессуары" userData="Аксессуары" />
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="Книги" userData="Книги" />
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="Телефоны" userData="Телефоны" />
+                <Button onAction="#handleCategoryLinkAction" styleClass="category-link-button" text="Одежда" userData="Одежда" />
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+
+   <center>
+      <!-- SỬ DỤNG STACKPANE LÀM CONTAINER CHÍNH CHO VÙNG CENTER -->
+      <StackPane fx:id="centerContentStackPane" BorderPane.alignment="CENTER">
+         <children>
+            <!-- LỚP VIDEO BACKGROUND (NẰM DƯỚI CÙNG CỦA STACKPANE NÀY) -->
+            <MediaView fx:id="contentBackgroundMediaView" fitWidth="${centerContentStackPane.width}" fitHeight="${centerContentStackPane.height}" preserveRatio="false" opacity="1.0" mouseTransparent="true" />
+                                                                 <!-- ^ Điều chỉnh opacity ở đây ^ -->
+
+            <!-- SCROLLPANE CHỨA NỘI DUNG CHÍNH (BANNER, SẢN PHẨM, BIỂU ĐỒ) SẼ NẰM TRÊN VIDEO -->
+            <!-- Nền của ScrollPane và VBox bên trong cần được đặt là trong suốt trong CSS -->
+            <ScrollPane fx:id="mainScrollPane" fitToWidth="true" hbarPolicy="NEVER" styleClass="transparent-scrollpane">
+               <content>
+                  <VBox fx:id="contentVBox" alignment="TOP_CENTER" spacing="20.0" styleClass="transparent-vbox" style="-fx-padding: 20;">
+                  
+                     <!-- Main Banner (Video hoặc Ảnh tĩnh - hiện tại là video) -->
+                     <StackPane fx:id="bannerStackPane" alignment="CENTER" minHeight="300" prefHeight="400"> <!-- Đặt chiều cao min/pref cho banner -->
+                         <MediaView fx:id="mainBannerMediaView" fitWidth="1180.0" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);" />
+                     </StackPane>
+
+                     <Label fx:id="sectionTitleLabel" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 2,0,0,1);" text="Featured Products">
+                                                                                                   <!-- ^ Đổi màu chữ thành trắng hoặc màu sáng để nổi trên video ^ -->
+                        <VBox.margin>
+                           <Insets top="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <FlowPane fx:id="featuredProductsPane" hgap="20.0" prefWrapLength="1180.0" vgap="20.0" styleClass="transparent-flowpane"/>
+                     
+                     <HBox fx:id="paginationControlsContainer" alignment="CENTER" spacing="10.0" style="-fx-padding: 15 0 5 0;">
+                         <children>
+                             <Button fx:id="prevPageButton" onAction="#handlePreviousPage" styleClass="pagination-button" text="Previous>" />
+                             <Label fx:id="pageInfoLabel" styleClass="pagination-label, light-text-on-video" text="Page 1 of 1" />
+                             <Button fx:id="nextPageButton" onAction="#handleNextPage" styleClass="pagination-button" text="Next >" />
+                         </children>
+                     </HBox>
+                     
+                     <Label text="Product Category Distribution" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 20 0 5 0; -fx-text-fill: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 2,0,0,1);">
+                                                                                                               <!-- ^ Đổi màu chữ thành trắng ^ -->
+                         <VBox.margin>
+                             <Insets top="20.0" />
+                         </VBox.margin>
+                     </Label>
+                     <ImageView fx:id="categoryPieChartImageView" fitHeight="350.0" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0.85); -fx-border-color: rgba(221,221,221,0.7); -fx-border-width: 1px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 1, 1); -fx-background-radius: 5px;">
+                                                                                                                             <!-- ^ Làm mờ nền ImageView của biểu đồ ^ -->
+                         <VBox.margin>
+                             <Insets bottom="20.0" />
+                         </VBox.margin>
+                     </ImageView>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </center>
+
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="50.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2025 OnlineShop. All rights reserved. Copyright belongs to NS shop." />
+            </children>
+        </HBox>
+   </bottom>
+</BorderPane>

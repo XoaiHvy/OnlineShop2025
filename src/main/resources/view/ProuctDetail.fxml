@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ProductDetailController"> <!-- KHAI BÁO CONTROLLER -->
+   <children>
+      <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+         <children>
+            <Label fx:id="productNameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Product Name Placeholder" />
+            <ImageView fx:id="productImageView" fitHeight="250.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="productPriceLabel" style="-fx-font-size: 20px; -fx-text-fill: #e74c3c;" text="\$0.00" />
+            <Label fx:id="productCategoryLabel" style="-fx-font-size: 16px;" text="Category: Placeholder" />
+            <Label fx:id="productDescriptionLabel" wrapText="true" text="Product description will go here..." />
+            <Button text="Add to Cart" onAction="#handleAddToCart" styleClass="add-to-cart-button"/>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

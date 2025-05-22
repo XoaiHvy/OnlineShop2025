@@ -1,0 +1,16 @@
+--module-path
+"C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib"
+--add-modules
+javafx.controls,javafx.fxml,javafx.media,javafx.swing
+-Dfile.encoding=UTF-8
+-Dstdout.encoding=UTF-8
+-Dstderr.encoding=UTF-8
+-p
+"C:\\Users\\admin\\Downloads\\mysql-connector-j-9.3.0\\mysql-connector-j-9.3.0.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx-swt.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.base.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.controls.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.fxml.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.graphics.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.media.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.swing.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\javafx.web.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\jdk.jsobject.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\jfx.incubator.input.jar;E:\\openjfx-24.0.1_windows-x64_bin-sdk\\javafx-sdk-24.0.1\\lib\\jfx.incubator.richtext.jar;C:\\Users\\admin\\.p2\\pool\\plugins\\org.eclipse.fx.ide.css.jfx8_3.8.0.202204150904.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.base.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.controls.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.fxml.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.graphics.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.media.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.swing.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx.web.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\javafx-swt.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\jcommon-1.0.23.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\jfreechart-1.0.19.jar;C:\\Users\\admin\\Downloads\\giainendi\\javafx-sdk-21.0.7\\lib\\mysql-connector-j-9.3.0.jar"
+-XX:+ShowCodeDetailsInExceptionMessages
+--patch-module
+"OnlineShop2025=E:\\OnlineShop\\OnlineShop2025\\bin"
+--add-modules
+ALL-SYSTEM
+-m
+OnlineShop2025/application.Main

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ProductController" prefWidth="800" prefHeight="600" style="-fx-background-color: #f5f7fa;">
+    <top>
+        <HBox spacing="10" style="-fx-padding: 20; -fx-background-color: #2c3e50;">
+            <Label text="📦 	Product Management" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <TableView fx:id="productTable" prefHeight="400">
+                <columns>
+                    <TableColumn text="ID" fx:id="colId"/>
+                    <TableColumn text="Name" fx:id="colName"/>
+                    <TableColumn text="Price" fx:id="colPrice"/>
+                    <TableColumn text="Quantity" fx:id="colQuantity"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <Button text="Add" fx:id="btnAdd" onAction="#onAdd"/>
+            <Button text="Edit" fx:id="btnEdit" onAction="#onEdit"/>
+            <Button text="Delete" fx:id="btnDelete" onAction="#onDelete"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+	

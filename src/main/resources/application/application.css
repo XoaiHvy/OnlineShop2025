@@ -1,0 +1,388 @@
+/* File:/application/application.css 
+
+/* --- COMMON STYLES (If any, add here) --- */
+/* Example:
+.root {
+    -fx-primary-color: #007bff;
+    -fx-secondary-color: #6c757d;
+}
+*/
+
+/* --- NEW LOGIN SCREEN STYLES (Glassmorphism as per your latest request) --- */
+.glass-login-form {
+    -fx-background-color: rgba(35, 25, 70, 0.25); /* Darker purple, adjustable opacity */
+    -fx-background-radius: 25px;
+    -fx-padding: 40px 35px; /* Top/Bottom Left/Right */
+    -fx-border-color: rgba(255, 255, 255, 0.15); /* Very faint white border */
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 30, 0, 0, 10); /* Softer, larger shadow */
+
+    /* Appear Animation */
+    -fx-opacity: 0;
+    -fx-transform: translateY(25px) scale(0.97);
+    -fx-animation: formAppear 0.6s 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes formAppear {
+    to {
+        -fx-opacity: 1;
+        -fx-transform: translateY(0) scale(1);
+    }
+}
+
+.glass-login-title {
+    -fx-font-size: 30px; /* As per your new CSS */
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 0 0 10px 0;
+}
+
+.input-group { /* VBox containing Label and HBox input */
+    -fx-spacing: 5px;
+}
+
+.glass-form-label {
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-text-fill: rgba(220, 220, 240, 0.8);
+    -fx-padding: 0 0 0 5px;
+}
+
+.glass-input-field-container { /* HBox containing TextField/PasswordField and Icon */
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 25px; /* More rounded to match form */
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 15px 0px 15px; /* Padding for icon and text */
+    -fx-alignment: center-left;
+
+    -fx-transition-property: -fx-background-color, -fx-effect;
+    -fx-transition-duration: 0.2s;
+    -fx-transition-timing-function: ease-out;
+}
+
+.glass-input-field-container:focused-within {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-effect: dropshadow(gaussian, rgba(180, 150, 255, 0.3), 10, 0, 0, 0);
+}
+
+.glass-input-field-no-icon { /* For TextField/PasswordField when icon is a suffix */
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(200, 200, 220, 0.5);
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-padding: 12px 5px 12px 0px; /* Padding for text, no left padding if icon is overlay or suffix */
+}
+
+.glass-input-icon-suffix { /* For ImageView icon on the right */
+    -fx-opacity: 0.7;
+    -fx-padding: 0 0 0 8px; /* Space between text and icon */
+}
+
+.glass-form-checkbox .text {
+    -fx-text-fill: rgba(220, 220, 240, 0.9);
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial", sans-serif;
+}
+.glass-form-checkbox .box {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-border-color: rgba(255,255,255,0.3);
+    -fx-border-radius: 3px;
+}
+.glass-form-checkbox:selected .mark {
+    -fx-background-color: white;
+}
+.glass-form-checkbox:selected .box {
+     -fx-background-color: rgba(180, 150, 255, 0.9);
+     -fx-border-color: rgba(180, 150, 255, 0.9);
+}
+
+.glass-form-hyperlink {
+    -fx-text-fill: rgba(200, 190, 255, 0.85);
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+    -fx-transition-property: -fx-text-fill;
+    -fx-transition-duration: 0.2s;
+}
+.glass-form-hyperlink:hover {
+    -fx-text-fill: white;
+}
+
+.glass-login-button {
+    -fx-background-color: white;
+    -fx-text-fill: #330066; /* Dark purple text */
+    -fx-font-size: 15px;
+    -fx-font-family: "Arial Black", sans-serif;
+    /* -fx-font-weight: bold; */ /* Already in Arial Black */
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 2, 3);
+
+    -fx-transition-property: background-color, transform, -fx-effect;
+    -fx-transition-duration: 0.18s;
+    -fx-transition-timing-function: ease-out;
+}
+.glass-login-button:hover {
+    -fx-background-color: #f5f0ff;
+    -fx-transform: scale(1.02);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 12, 0, 3, 4);
+}
+.glass-login-button:pressed {
+    -fx-transform: scale(0.98);
+    -fx-background-color: #eaddff;
+}
+
+.glass-signup-text {
+    -fx-fill: rgba(220, 220, 240, 0.8);
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial", sans-serif;
+}
+.glass-signup-link {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial", sans-serif;
+}
+.glass-signup-link:hover{ /* Ensure hover for this specific link also has underline if desired */
+    -fx-underline: true;
+}
+
+/* Styles for Divider and Social Login (if you re-add them to FXML) */
+.divider-line {
+    -fx-stroke: rgba(255, 255, 255, 0.25);
+}
+.divider-text {
+    -fx-fill: rgba(255, 255, 255, 0.6);
+}
+.social-login-button.google-button {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-text-fill: #333;
+    -fx-border-color: rgba(0,0,0,0.1);
+    -fx-font-weight: normal;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 20px;
+}
+.social-login-button.google-button:hover {
+     -fx-background-color: white;
+}
+
+
+/* --- DASHBOARD STYLES (Kept from previous version) --- */
+
+.top-bar-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #555555;
+}
+
+.main-search-field {
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 14px;
+    -fx-border-color: #9933CC;
+    -fx-prompt-text-fill: #aaaaaa;
+}
+
+.main-search-button {
+    -fx-background-color: #FF99FF;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 18px;
+}
+.main-search-button:hover {
+    -fx-background-color: #FF99FF;
+}
+
+.nav-text-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 15px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.nav-text-button .label {
+    -fx-text-fill: #333333;
+}
+.nav-text-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+.nav-text-button:hover .label {
+    -fx-text-fill: #007bff;
+}
+
+.category-link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 12px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
+.category-link-button:hover {
+    -fx-text-fill: #007bff;
+    -fx-underline: true;
+}
+
+.product-card {
+    -fx-background-color: white;
+    -fx-border-color: #FF66FF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 2, 2);
+    -fx-cursor: hand;
+    -fx-alignment: top-center;
+}
+.product-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 3, 3);
+    -fx-border-color: #007bff;
+}
+
+.product-name-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center;
+    -fx-min-height: 40px;
+}
+
+.product-price-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e74c3c;
+    -fx-alignment: center;
+}
+
+.add-to-cart-button {
+    -fx-background-color: #FF33CC;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+}
+.add-to-cart-button:hover {
+    -fx-background-color: #CC3366;
+}
+
+.remove-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+}
+.remove-button:hover {
+    -fx-background-color: #c82333;
+}
+
+.secondary-action-button {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+}
+.secondary-action-button:hover{
+    -fx-background-color: #663399;
+}
+
+.primary-action-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+}
+.primary-action-button:hover {
+    -fx-background-color: #0056b3;
+}
+
+.pagination-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 5px 15px;
+    -fx-background-radius: 4px;
+}
+.pagination-button:hover {
+    -fx-background-color: #0056b3;
+}
+.pagination-button:disabled {
+    -fx-opacity: 0.6;
+}
+
+.pagination-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+    -fx-padding: 0 10px;
+}
+/* Thêm vào application.css */
+.footer-text-on-video {
+    -fx-fill: white;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.7), 3, 0.0, 1, 1); /* Đổ bóng nhẹ cho text */
+}
+/* Thêm vào src/application/application.css */
+
+/* ... các style hiện có ... */
+
+.transparent-scrollpane {
+    -fx-background-color: transparent;
+}
+.transparent-scrollpane .viewport { /* viewport là vùng nội dung thực sự của ScrollPane */
+    -fx-background-color: transparent;
+}
+
+.transparent-vbox {
+    -fx-background-color: transparent;
+}
+
+.transparent-flowpane {
+    -fx-background-color: transparent;
+}
+
+/* Style cho text trên nền video nếu cần */
+.light-text-on-video .text, /* Cho Label có text */
+.light-text-on-video { /* Cho Label không có text (chỉ graphic) */
+    -fx-text-fill: #f0f0f0; /* Màu xám rất nhạt hoặc trắng */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 1, 0, 0, 1); /* Bóng đổ nhẹ để dễ đọc */
+}
+
+/* Các card sản phẩm có thể cần điều chỉnh lại một chút nền nếu video nền quá sáng hoặc tối */
+.product-card {
+    -fx-background-color: rgba(72, 61, 139, 0.7); /* Nền trắng hơi mờ cho card */
+    /* ... các style khác của product-card giữ nguyên ... */
+}
+.transparent-scrollpane {
+    -fx-background: transparent; /* Quan trọng: dùng -fx-background thay vì -fx-background-color */
+    -fx-background-color: transparent; /* Thêm cả cái này cho chắc chắn */
+}
+
+.transparent-scrollpane .viewport {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+}
+
+/* Đảm bảo VBox bên trong ScrollPane cũng trong suốt */
+.transparent-vbox {
+    -fx-background-color: transparent;
+}
+
+/* Nếu FlowPane chứa sản phẩm cũng cần trong suốt để video nền xuyên qua */
+.transparent-flowpane {
+    -fx-background-color: transparent;
+}
+
+.light-text-on-video {
+    -fx-text-fill: #f0f0f0; /* Màu trắng xám */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 1, 0.0, 0, 1); /* Bóng đổ nhẹ cho dễ đọc */
+}
