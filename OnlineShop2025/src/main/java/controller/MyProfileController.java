@@ -1,4 +1,3 @@
-// File: src/controller/MyProfileController.java
 package controller;
 
 import Connect.DBConnection;
@@ -6,10 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label; // Import Label if needed for non-editable fields
+import javafx.scene.control.Label; 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import model.User; // Your User model
+import model.User; 
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,7 +60,7 @@ public class MyProfileController {
                 populateFields(currentUser);
             } else {
                 showAlert(Alert.AlertType.WARNING, "User Not Found", "Could not find profile for user ID: " + currentLoggedInUserId);
-                // disableFields(); // Optionally disable fields if user not found
+                
             }
 
         } catch (SQLException e) {
@@ -106,7 +105,7 @@ public class MyProfileController {
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Profile updated successfully!");
-                // Optionally reload profile to reflect changes if not automatically bound
+               
                 loadUserProfile(); 
             } else {
                 showAlert(Alert.AlertType.ERROR, "Update Failed", "Could not update profile. Please try again.");
@@ -121,12 +120,7 @@ public class MyProfileController {
     @FXML
     void handleChangePassword(ActionEvent event) {
         System.out.println("Change Password clicked.");
-        // TODO: Implement change password functionality
-        // This usually involves opening a new dialog/window asking for:
-        // 1. Current Password
-        // 2. New Password
-        // 3. Confirm New Password
-        // Then, validate and update the password_hash in the database.
+        
         showAlert(Alert.AlertType.INFORMATION, "Feature Not Implemented", "Change password functionality is not yet implemented.");
     }
 
@@ -139,7 +133,7 @@ public class MyProfileController {
     }
 
 	public void setCurrentUser(User userToPass) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

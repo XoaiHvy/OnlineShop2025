@@ -1,24 +1,12 @@
-/* File:/application/application.css 
-
-/* --- COMMON STYLES (If any, add here) --- */
-/* Example:
-.root {
-    -fx-primary-color: #007bff;
-    -fx-secondary-color: #6c757d;
-}
-*/
-
-/* --- NEW LOGIN SCREEN STYLES (Glassmorphism as per your latest request) --- */
 .glass-login-form {
-    -fx-background-color: rgba(35, 25, 70, 0.25); /* Darker purple, adjustable opacity */
+    -fx-background-color: rgba(35, 25, 70, 0.25); 
     -fx-background-radius: 25px;
-    -fx-padding: 40px 35px; /* Top/Bottom Left/Right */
-    -fx-border-color: rgba(255, 255, 255, 0.15); /* Very faint white border */
+    -fx-padding: 40px 35px; 
+    -fx-border-color: rgba(255, 255, 255, 0.15);
     -fx-border-width: 1.5px;
     -fx-border-radius: 25px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 30, 0, 0, 10); /* Softer, larger shadow */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 30, 0, 0, 10); 
 
-    /* Appear Animation */
     -fx-opacity: 0;
     -fx-transform: translateY(25px) scale(0.97);
     -fx-animation: formAppear 0.6s 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -32,7 +20,7 @@
 }
 
 .glass-login-title {
-    -fx-font-size: 30px; /* As per your new CSS */
+    -fx-font-size: 30px; 
     -fx-font-family: "Arial", sans-serif;
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -40,7 +28,7 @@
     -fx-padding: 0 0 10px 0;
 }
 
-.input-group { /* VBox containing Label and HBox input */
+.input-group {
     -fx-spacing: 5px;
 }
 
@@ -51,12 +39,12 @@
     -fx-padding: 0 0 0 5px;
 }
 
-.glass-input-field-container { /* HBox containing TextField/PasswordField and Icon */
+.glass-input-field-container { 
     -fx-background-color: rgba(0, 0, 0, 0.2);
-    -fx-background-radius: 25px; /* More rounded to match form */
+    -fx-background-radius: 25px;
     -fx-border-color: transparent;
     -fx-border-width: 0px;
-    -fx-padding: 0px 15px 0px 15px; /* Padding for icon and text */
+    -fx-padding: 0px 15px 0px 15px; 
     -fx-alignment: center-left;
 
     -fx-transition-property: -fx-background-color, -fx-effect;
@@ -69,18 +57,18 @@
     -fx-effect: dropshadow(gaussian, rgba(180, 150, 255, 0.3), 10, 0, 0, 0);
 }
 
-.glass-input-field-no-icon { /* For TextField/PasswordField when icon is a suffix */
+.glass-input-field-no-icon { 
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-prompt-text-fill: rgba(200, 200, 220, 0.5);
     -fx-font-size: 14px;
     -fx-font-family: "Arial", sans-serif;
-    -fx-padding: 12px 5px 12px 0px; /* Padding for text, no left padding if icon is overlay or suffix */
+    -fx-padding: 12px 5px 12px 0px;
 }
 
-.glass-input-icon-suffix { /* For ImageView icon on the right */
+.glass-input-icon-suffix { 
     -fx-opacity: 0.7;
-    -fx-padding: 0 0 0 8px; /* Space between text and icon */
+    -fx-padding: 0 0 0 8px; 
 }
 
 .glass-form-checkbox .text {
@@ -116,10 +104,10 @@
 
 .glass-login-button {
     -fx-background-color: white;
-    -fx-text-fill: #330066; /* Dark purple text */
+    -fx-text-fill: #330066; 
     -fx-font-size: 15px;
     -fx-font-family: "Arial Black", sans-serif;
-    /* -fx-font-weight: bold; */ /* Already in Arial Black */
+   
     -fx-padding: 12px 20px;
     -fx-background-radius: 25px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 2, 3);
@@ -148,11 +136,10 @@
     -fx-font-weight: bold;
     -fx-font-family: "Arial", sans-serif;
 }
-.glass-signup-link:hover{ /* Ensure hover for this specific link also has underline if desired */
+.glass-signup-link:hover{ 
     -fx-underline: true;
 }
 
-/* Styles for Divider and Social Login (if you re-add them to FXML) */
 .divider-line {
     -fx-stroke: rgba(255, 255, 255, 0.25);
 }
@@ -171,8 +158,6 @@
      -fx-background-color: white;
 }
 
-
-/* --- DASHBOARD STYLES (Kept from previous version) --- */
 
 .top-bar-label {
     -fx-font-size: 12px;
@@ -325,20 +310,17 @@
     -fx-text-fill: #333;
     -fx-padding: 0 10px;
 }
-/* Thêm vào application.css */
 .footer-text-on-video {
     -fx-fill: white;
     -fx-font-size: 12px;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.7), 3, 0.0, 1, 1); /* Đổ bóng nhẹ cho text */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.7), 3, 0.0, 1, 1);
 }
-/* Thêm vào src/application/application.css */
 
-/* ... các style hiện có ... */
 
 .transparent-scrollpane {
     -fx-background-color: transparent;
 }
-.transparent-scrollpane .viewport { /* viewport là vùng nội dung thực sự của ScrollPane */
+.transparent-scrollpane .viewport { 
     -fx-background-color: transparent;
 }
 
@@ -350,21 +332,19 @@
     -fx-background-color: transparent;
 }
 
-/* Style cho text trên nền video nếu cần */
-.light-text-on-video .text, /* Cho Label có text */
-.light-text-on-video { /* Cho Label không có text (chỉ graphic) */
-    -fx-text-fill: #f0f0f0; /* Màu xám rất nhạt hoặc trắng */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 1, 0, 0, 1); /* Bóng đổ nhẹ để dễ đọc */
+.light-text-on-video .text, 
+.light-text-on-video { 
+    -fx-text-fill: #f0f0f0; 
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 1, 0, 0, 1); 
 }
 
-/* Các card sản phẩm có thể cần điều chỉnh lại một chút nền nếu video nền quá sáng hoặc tối */
 .product-card {
-    -fx-background-color: rgba(72, 61, 139, 0.7); /* Nền trắng hơi mờ cho card */
-    /* ... các style khác của product-card giữ nguyên ... */
+    -fx-background-color: rgba(72, 61, 139, 0.7); 
+    
 }
 .transparent-scrollpane {
-    -fx-background: transparent; /* Quan trọng: dùng -fx-background thay vì -fx-background-color */
-    -fx-background-color: transparent; /* Thêm cả cái này cho chắc chắn */
+    -fx-background: transparent;
+    -fx-background-color: transparent;
 }
 
 .transparent-scrollpane .viewport {
@@ -372,17 +352,15 @@
     -fx-background-color: transparent;
 }
 
-/* Đảm bảo VBox bên trong ScrollPane cũng trong suốt */
 .transparent-vbox {
     -fx-background-color: transparent;
 }
 
-/* Nếu FlowPane chứa sản phẩm cũng cần trong suốt để video nền xuyên qua */
 .transparent-flowpane {
     -fx-background-color: transparent;
 }
 
 .light-text-on-video {
-    -fx-text-fill: #f0f0f0; /* Màu trắng xám */
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 1, 0.0, 0, 1); /* Bóng đổ nhẹ cho dễ đọc */
+    -fx-text-fill: #f0f0f0; 
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 1, 0.0, 0, 1); 
 }

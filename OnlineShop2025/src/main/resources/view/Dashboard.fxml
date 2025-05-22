@@ -24,13 +24,13 @@
     <top>
       <VBox>
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" spacing="20.0" style="-fx-background-color: #8000ff;">
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" spacing="20.0" style="-fx-background-color:#FF00FF;">
                <padding>
                   <Insets right="20.0" />
                </padding>
                <children>
-                  <Label styleClass="top-bar-label" text="Hotline: 1800-xxxx" />
-                  <Label styleClass="top-bar-label" text="Find a Store" />
+                  <Label styleClass="top-bar-label" text="Hotline: 0706210313" />
+                  <Label styleClass="top-bar-label" text="THE BEST STORE" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" style="-fx-background-color: #bf00ff; -fx-padding: 0 20 0 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">

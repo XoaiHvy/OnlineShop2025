@@ -1,27 +1,26 @@
-package controller; // Đảm bảo đúng package
+package controller; 
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label; // Import cho Label
+import javafx.scene.control.Label; 
 
 public class ProductListController {
 
     @FXML
-    private Label categoryLabel; // Để hiển thị category hoặc search term (tùy chọn)
+    private Label categoryLabel; 
 
     @FXML
     public void initialize() {
         System.out.println("ProductListController initialized.");
-        // Ban đầu, không làm gì nhiều ở đây
+       
     }
 
-    // Các phương thức này sẽ được gọi từ DashboardController
-    // Hiện tại chúng chỉ in ra console để bạn biết chúng được gọi
+   
     public void loadProductsBySearch(String searchTerm) {
         System.out.println("ProductListController: Loading products by search term: " + searchTerm);
-        if (categoryLabel != null) { // Kiểm tra null trước khi dùng
+        if (categoryLabel != null) { 
             categoryLabel.setText("Search Results for: " + searchTerm);
         }
-        // TODO: Implement logic to fetch and display products based on search term
+       
     }
 
     public void loadProductsByCategory(String category) {
@@ -29,7 +28,7 @@ public class ProductListController {
         if (categoryLabel != null) {
             categoryLabel.setText("Category: " + category);
         }
-        // TODO: Implement logic to fetch and display products for the
+        
     }
 
     public void loadAllProducts() {
@@ -37,6 +36,6 @@ public class ProductListController {
         if (categoryLabel != null) {
             categoryLabel.setText("All Products");
         }
-        // TODO: Implement logic to fetch and display all products
+        
     }
 }

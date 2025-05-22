@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 // Bỏ các import không cần thiết cho việc kết nối cơ bản nếu có
-// import java.io.IOException;
-// import java.nio.charset.StandardCharsets;
-// import java.nio.file.Files;
-// import java.nio.file.Paths;
-// import java.sql.Statement;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Statement;
 
 public class DBConnection {
 

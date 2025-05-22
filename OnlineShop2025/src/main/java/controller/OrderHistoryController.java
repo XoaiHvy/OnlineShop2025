@@ -1,4 +1,3 @@
-// File: src/controller/OrderHistoryController.java
 package controller;
 
 import Connect.DBConnection;
@@ -23,25 +22,24 @@ import java.time.LocalDate;
 public class OrderHistoryController {
 
     @FXML private TableView<OrderSummary> ordersTableView;
-    @FXML private TableColumn<OrderSummary, Integer> orderIdColumn; // Sẽ là order_item_id
+    @FXML private TableColumn<OrderSummary, Integer> orderIdColumn; 
     @FXML private TableColumn<OrderSummary, String> orderDateColumn;
-    @FXML private TableColumn<OrderSummary, Integer> productIdColumn; // MỚI
-    // @FXML private TableColumn<OrderSummary, String> productNameColumn; // Cần join để có tên
-    @FXML private TableColumn<OrderSummary, Integer> quantityColumn;  // MỚI
-    @FXML private TableColumn<OrderSummary, Double> totalPriceColumn; // total_price của dòng này
+    @FXML private TableColumn<OrderSummary, Integer> productIdColumn; 
+ 
+    @FXML private TableColumn<OrderSummary, Integer> quantityColumn; 
+    @FXML private TableColumn<OrderSummary, Double> totalPriceColumn; 
     @FXML private TableColumn<OrderSummary, String> statusColumn;
 
     private ObservableList<OrderSummary> orderList = FXCollections.observableArrayList();
-    private int currentUserId = 1; // Tạm thời, sau này lấy từ session
-
+    private int currentUserId = 1; 
     @FXML
     public void initialize() {
         System.out.println("OrderHistoryController initialized.");
 
         orderIdColumn.setCellValueFactory(cellData -> cellData.getValue().orderIdProperty().asObject());
         orderDateColumn.setCellValueFactory(cellData -> cellData.getValue().orderDateProperty());
-        productIdColumn.setCellValueFactory(cellData -> cellData.getValue().productIdProperty().asObject()); // MỚI
-        quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());   // MỚI
+        productIdColumn.setCellValueFactory(cellData -> cellData.getValue().productIdProperty().asObject()); 
+        quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());   
         totalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
 
@@ -88,7 +86,7 @@ public class OrderHistoryController {
     }
 
 	public void setCurrentUser(User dataToPass) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

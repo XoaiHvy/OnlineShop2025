@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos; // Import for VBox alignment in error display
+import javafx.geometry.Pos; 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import util.ChartGenerator; 
-// import javafx.scene.control.MenuItem; // Not strictly needed if actions are on MenuButton's MenuItems
+import javafx.scene.control.MenuItem; 
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -23,11 +23,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane; // Import for bannerStackPane
+import javafx.scene.layout.StackPane; 
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;        // IMPORT FOR VIDEO
-import javafx.scene.media.MediaPlayer;  // IMPORT FOR VIDEO
-import javafx.scene.media.MediaView;    // IMPORT FOR VIDEO
+import javafx.scene.media.Media;        
+import javafx.scene.media.MediaPlayer;  
+import javafx.scene.media.MediaView;    
 import javafx.stage.Stage;
 import model.Product;
 import model.User;
@@ -56,13 +56,13 @@ public class DashboardController {
     @FXML private ScrollPane mainScrollPane;
     @FXML private VBox contentVBox;
     @FXML private ImageView categoryPieChartImageView;
-    // @FXML private ImageView mainBannerImageView; // Sẽ được thay thế bằng MediaView nếu dùng video banner
-    @FXML private MediaView mainBannerMediaView;   // THAY THẾ CHO mainBannerImageView
-    @FXML private StackPane bannerStackPane;       // Container cho mainBannerMediaView
+    // @FXML private ImageView mainBannerImageView; 
+    @FXML private MediaView mainBannerMediaView;   
+    @FXML private StackPane bannerStackPane;      
     @FXML private FlowPane featuredProductsPane;
     @FXML
     private Button prevPageButton;
-    @FXML private StackPane centerContentStackPane; // Container cho video nền và scrollpane
+    @FXML private StackPane centerContentStackPane; 
     @FXML private MediaView contentBackgroundMediaView;
     @FXML private HBox paginationControlsContainer; 
     @FXML private Label pageInfoLabel;
@@ -71,7 +71,7 @@ public class DashboardController {
     private List<Product> allProductsFromDB;
     private List<Product> currentProductListSource;
     private ShoppingCartManager cartManager;
-    private MediaPlayer dashboardBannerPlayer; // MediaPlayer cho video banner
+    private MediaPlayer dashboardBannerPlayer;
     private int currentPage = 1;
     private final int ITEMS_PER_PAGE = 8;
     private int totalPages = 1; 
@@ -81,17 +81,17 @@ public class DashboardController {
         System.out.println("DashboardController initialized.");
         cartManager = ShoppingCartManager.getInstance();
 
-        initializeDashboardBannerVideo(); // THAY THẾ TẢI ẢNH BANNER BẰNG VIDEO
+        initializeDashboardBannerVideo(); 
         initializeContentBackgroundVideo();
         allProductsFromDB = new ArrayList<>();
         currentProductListSource = new ArrayList<>();
         loadProductsFromDatabase();
         if (allProductsFromDB != null && !allProductsFromDB.isEmpty()) {
-            Image pieChartImage = ChartGenerator.createCategoryPieChart(allProductsFromDB, 500, 350); // Width, Height
+            Image pieChartImage = ChartGenerator.createCategoryPieChart(allProductsFromDB, 500, 350); 
             if (categoryPieChartImageView != null && pieChartImage != null) {
                 categoryPieChartImageView.setImage(pieChartImage);
             } else if (categoryPieChartImageView != null) {
-                categoryPieChartImageView.setImage(null); // Xóa ảnh cũ nếu không tạo được chart mới
+                categoryPieChartImageView.setImage(null); 
                 System.err.println("Pie chart image is null, cannot display.");
             }
         } else {
@@ -99,7 +99,7 @@ public class DashboardController {
              System.out.println("No product data for chart.");
         }
         
-        showMainContentLayout(); // Hiển thị nội dung chính (bao gồm cả featured products)
+        showMainContentLayout(); 
     }
 
     private void initializeDashboardBannerVideo() {
@@ -158,8 +158,8 @@ public class DashboardController {
             return;
         }
         try {
-            // Chọn một video khác hoặc cùng video với banner, tùy ý bạn
-            String videoPath = "/images/another_background_video.mp4"; // Đặt tên tệp video nền cho content
+           
+            String videoPath = "/images/another_background_video.mp4"; 
             URL videoUrl = getClass().getResource(videoPath);
 
             if (videoUrl == null) {
@@ -173,7 +173,7 @@ public class DashboardController {
             contentBackgroundMediaView.setMediaPlayer(contentBgPlayer);
 
             contentBgPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            contentBgPlayer.setMute(true); // Nền thì nên tắt tiếng
+            contentBgPlayer.setMute(true); 
             contentBgPlayer.setAutoPlay(true);
 
             contentBgPlayer.setOnError(() -> {
@@ -204,19 +204,16 @@ public class DashboardController {
             if (mainScrollPane.getContent() != contentVBox) {
                 mainScrollPane.setContent(contentVBox);
             }
-            // Quản lý hiển thị của banner video (hoặc stackpane chứa nó)
-            if (bannerStackPane != null) { // Nếu bạn dùng StackPane để chứa MediaView
+            
+            if (bannerStackPane != null) { 
                 bannerStackPane.setVisible(true);
                 bannerStackPane.setManaged(true);
                 if (dashboardBannerPlayer != null && dashboardBannerPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
                     dashboardBannerPlayer.play(); // Phát lại video nếu đã tạm dừng
                 } else if (dashboardBannerPlayer != null && dashboardBannerPlayer.getStatus() == MediaPlayer.Status.STOPPED) {
-                    // Nếu video đã stop, có thể cần tạo lại player hoặc seek về đầu rồi play
-                    // dashboardBannerPlayer.seek(Duration.ZERO);
-                    // dashboardBannerPlayer.play();
-                    // Hoặc đơn giản là không làm gì nếu đã stop hoàn toàn và không muốn tự phát lại
+                    
                 }
-            } else if (mainBannerMediaView != null) { // Nếu MediaView là con trực tiếp của contentVBox
+            } else if (mainBannerMediaView != null) { 
                  mainBannerMediaView.setVisible(true);
                  mainBannerMediaView.setManaged(true);
                   if (dashboardBannerPlayer != null && dashboardBannerPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
@@ -235,8 +232,7 @@ public class DashboardController {
         }
     }
 
-    // ... (loadProductsFromDatabase, displayErrorInScrollPane, displayFeaturedProducts, v.v... giữ nguyên) ...
-    // Đảm bảo các phương thức này không cố gắng truy cập mainBannerImageView nữa.
+   
 
     private void loadProductsFromDatabase() {
         allProductsFromDB = new ArrayList<>();
@@ -280,27 +276,26 @@ public class DashboardController {
 
         if (currentProductListSource == null || currentProductListSource.isEmpty()) {
             featuredProductsPane.getChildren().add(new Label("No products to display for the current selection."));
-            updatePaginationControlsUI(); // Vẫn cập nhật UI phân trang
+            updatePaginationControlsUI(); 
             return;
         }
         
-        // Tính toán lại totalPages ở đây dựa trên currentProductListSource là chính xác nhất
+       
         totalPages = (int) Math.ceil((double) currentProductListSource.size() / ITEMS_PER_PAGE);
         if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
         if (currentPage < 1 && totalPages > 0) currentPage = 1;
-        if (totalPages == 0) currentPage = 1; // Nếu không có trang nào, coi như trang 1
+        if (totalPages == 0) currentPage = 1; 
 
 
         int startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
         int endIndex = Math.min(startIndex + ITEMS_PER_PAGE, currentProductListSource.size());
 
         if (startIndex >= currentProductListSource.size() && !currentProductListSource.isEmpty()) { 
-            // Điều này xảy ra nếu currentPage > totalPages thực tế sau khi lọc/tìm kiếm
-            // và currentProductListSource không rỗng. Có thể reset về trang 1.
+           
              currentPage = 1;
              startIndex = 0;
              endIndex = Math.min(ITEMS_PER_PAGE, currentProductListSource.size());
-             if (startIndex >= currentProductListSource.size()) { // Vẫn không có gì sau khi reset
+             if (startIndex >= currentProductListSource.size()) { 
                  featuredProductsPane.getChildren().add(new Label("No products on this page."));
                  updatePaginationControlsUI();
                  return;
@@ -510,16 +505,16 @@ public class DashboardController {
         System.out.println("Search initiated for: " + searchTerm);
         
         if (mainScrollPane != null && contentVBox != null) {
-            if (mainBannerMediaView != null) { // Sử dụng MediaView thay vì ImageView
+            if (mainBannerMediaView != null) { 
                 mainBannerMediaView.setVisible(false); 
                 mainBannerMediaView.setManaged(false); 
                 if (dashboardBannerPlayer != null && dashboardBannerPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-                    dashboardBannerPlayer.pause(); // Tạm dừng video
+                    dashboardBannerPlayer.pause(); 
                 }
             }
-             // Đảm bảo featuredProductsPane được hiển thị đúng cách trong contentVBox
+            
             if (!contentVBox.getChildren().contains(featuredProductsPane)) {
-                contentVBox.getChildren().clear(); // Xóa các view khác
+                contentVBox.getChildren().clear(); 
                 contentVBox.getChildren().add(featuredProductsPane);
             }
             featuredProductsPane.setVisible(true);
@@ -544,7 +539,7 @@ public class DashboardController {
     
     @FXML
     void handleCategoryLinkAction(ActionEvent event) {
-        showMainContentLayout(); // Hiển thị lại layout chính (bao gồm cả việc phát lại video nếu đã pause)
+        showMainContentLayout(); 
 
         if (event.getSource() instanceof Button) {
             Button clickedButton = (Button) event.getSource();
@@ -575,35 +570,34 @@ public class DashboardController {
     public void stopAllMediaPlayers() {
         if (dashboardBannerPlayer != null) {
             dashboardBannerPlayer.stop();
-            dashboardBannerPlayer.dispose(); // Quan trọng để giải phóng tài nguyên
+            dashboardBannerPlayer.dispose(); 
             System.out.println("Dashboard banner MediaPlayer stopped and disposed.");
         }
-        // Dừng các media players khác nếu có
+        
     }
     @FXML
     void handlePreviousPage(ActionEvent event) {
-        // Logic của bạn ở đây
+       
         System.out.println("Previous Page Clicked");
         if (currentPage > 1) {
             currentPage--;
-            displayProductsPage(); // Hoặc displayCurrentPage() tùy theo tên bạn đặt
+            displayProductsPage(); 
         }
     }
 
-    // Phương thức xử lý sự kiện cho nút Next
     @FXML
     void handleNextPage(ActionEvent event) {
-        // Logic của bạn ở đây
+      
         System.out.println("Next Page Clicked");
         if (currentPage < totalPages) {
             currentPage++;
-            displayProductsPage(); // Hoặc displayCurrentPage()
+            displayProductsPage();
         }
     }
     @FXML
     void handleLogout(ActionEvent event) {
         System.out.println("Logout clicked.");
-        stopAllMediaPlayers(); // Dừng video trước khi logout
+        stopAllMediaPlayers(); 
         UserSession.getInstance().clearSession();
         try {
             if (mainBorderPane != null && mainBorderPane.getScene() != null && mainBorderPane.getScene().getWindow() != null) {
@@ -621,15 +615,15 @@ public class DashboardController {
     }
 
     private void loadViewIntoScrollPane(String fxmlPath, String viewName, Object dataToPass) {
-        // Tạm dừng và ẩn video banner khi tải view khác
+       
         if (dashboardBannerPlayer != null && dashboardBannerPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             dashboardBannerPlayer.pause();
         }
-        if (bannerStackPane != null) { // Hoặc mainBannerMediaView nếu không dùng StackPane
+        if (bannerStackPane != null) { 
             bannerStackPane.setVisible(false);
             bannerStackPane.setManaged(false);
         }
-        // Ẩn luôn featuredProductsPane khi tải view khác
+      
         if (featuredProductsPane != null) {
             featuredProductsPane.setVisible(false);
             featuredProductsPane.setManaged(false);
@@ -649,15 +643,11 @@ public class DashboardController {
 
             if (dataToPass != null) {
                 Object controller = loader.getController();
-                // Hiện tại MyProfileController lấy user từ session, nên không cần truyền dataToPass ở đây nữa
-                // if (controller instanceof MyProfileController && dataToPass instanceof User) {
-                //    ((MyProfileController) controller).loadUserProfileWithUser((User) dataToPass);
-                // }
-                // ... các instanceof checks khác nếu cần ...
+              
             }
 
             if (mainScrollPane != null) {
-                mainScrollPane.setContent(viewRoot); // Đặt view mới làm nội dung chính
+                mainScrollPane.setContent(viewRoot); 
                 mainScrollPane.setVvalue(0.0);
             } else {
                 System.err.println("Cannot display " + viewName + ": mainScrollPane is null.");

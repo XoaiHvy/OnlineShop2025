@@ -1,4 +1,4 @@
-// File: src/controller/ShoppingCartController.java
+
 package controller;
 
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,7 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import model.CartItem;
-// import model.Product; // Không cần trực tiếp ở đây nếu CartItem đã chứa Product
+
 
 public class ShoppingCartController {
 
@@ -40,28 +40,23 @@ public class ShoppingCartController {
 
         setupTableColumns();
 
-        // Gán danh sách cartItems cho TableView
-        // ObservableList sẽ tự động thông báo cho TableView khi có thay đổi
+        
         cartTableView.setItems(cartManager.getCartItems());
 
-        updateSubtotal(); // Cập nhật tổng tiền ban đầu
+        updateSubtotal(); 
 
-        // Listener để cập nhật tổng tiền và placeholder khi danh sách thay đổi
         cartManager.getCartItems().addListener((ListChangeListener<CartItem>) c -> {
             System.out.println("Cart items list changed. Re-calculating subtotal and checking placeholder.");
-            updateSubtotal(); // Cập nhật tổng tiền
+            updateSubtotal(); 
             if (cartManager.getCartItems().isEmpty()) {
                 cartTableView.setPlaceholder(new Label("Your shopping cart is empty."));
             } else {
-                // Nếu bạn muốn xóa placeholder khi có item, bạn có thể đặt nó là null
-                // hoặc TableView sẽ tự ẩn nó khi có dữ liệu.
+                
                 cartTableView.setPlaceholder(null);
             }
-            // TableView nên tự động cập nhật khi ObservableList thay đổi.
-            // cartTableView.refresh(); // Thường không cần thiết nếu CellValueFactory đúng và list là Observable
+           
         });
         
-        // Đặt placeholder ban đầu nếu giỏ hàng trống
         if (cartManager.getCartItems().isEmpty()) {
             cartTableView.setPlaceholder(new Label("Your shopping cart is empty."));
         }
@@ -72,24 +67,21 @@ public class ShoppingCartController {
         productPriceColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getProductPrice()));
         totalItemPriceColumn.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
 
-        // Custom cell for Quantity with Spinner
         quantityColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue()));
         quantityColumn.setCellFactory(col -> new TableCell<CartItem, CartItem>() {
             private final Spinner<Integer> quantitySpinner = new Spinner<>();
-            // Di chuyển HBox ra ngoài khối khởi tạo để tránh tạo lại mỗi lần updateItem
+           
             private final HBox pane; 
 
-            { // Khối khởi tạo instance cho mỗi cell
-                pane = new HBox(5, quantitySpinner); // Khởi tạo HBox ở đây
+            { 
+                pane = new HBox(5, quantitySpinner); 
                 pane.setAlignment(Pos.CENTER);
                 quantitySpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
-                    CartItem currentItem = getItem(); // Lấy item của cell hiện tại
+                    CartItem currentItem = getItem(); 
                     if (currentItem != null && newValue != null && !newValue.equals(oldValue)) {
                         System.out.println("Quantity changed for " + currentItem.getProductName() + " to " + newValue);
                         cartManager.updateQuantity(currentItem, newValue);
-                        // updateSubtotal() sẽ được gọi bởi ListChangeListener trên cartItems
-                        // hoặc bởi listener trên totalPriceProperty của CartItem nếu có.
-                        // TableView nên tự refresh cột totalPrice khi totalPriceProperty thay đổi.
+                       
                     }
                 });
             }
@@ -100,11 +92,11 @@ public class ShoppingCartController {
                 if (empty || item == null) {
                     setGraphic(null);
                 } else {
-                    // Chỉ cấu hình lại ValueFactory nếu item thay đổi hoặc spinner chưa được cấu hình cho item này
+                    
                     if (quantitySpinner.getValueFactory() == null || 
                         ((SpinnerValueFactory.IntegerSpinnerValueFactory)quantitySpinner.getValueFactory()).getValue() != item.getQuantity()) {
                         SpinnerValueFactory<Integer> valueFactory =
-                                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, item.getQuantity()); // Min 0 để có thể xóa
+                                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, item.getQuantity()); 
                         quantitySpinner.setValueFactory(valueFactory);
                     }
                     setGraphic(pane);
@@ -114,18 +106,16 @@ public class ShoppingCartController {
         quantityColumn.setStyle("-fx-alignment: CENTER;");
 
 
-        // Custom cell for Actions (Remove button)
         actionsColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue()));
         actionsColumn.setCellFactory(col -> new TableCell<CartItem, CartItem>() {
             private final Button removeButton = new Button("Remove");
-            { // Khối khởi tạo instance cho mỗi cell
+            { 
                 removeButton.getStyleClass().add("remove-button");
                 removeButton.setOnAction(event -> {
-                    CartItem itemToRemove = getItem(); // Lấy CartItem của dòng hiện tại
+                    CartItem itemToRemove = getItem(); 
                     if (itemToRemove != null) {
                         System.out.println("Remove button clicked for: " + itemToRemove.getProductName());
-                        cartManager.removeProduct(itemToRemove); // Đây sẽ kích hoạt ListChangeListener
-                        // Không cần gọi updateSubtotal() hoặc refresh() ở đây nữa vì ListChangeListener sẽ xử lý
+                        cartManager.removeProduct(itemToRemove);                        
                     } else {
                         System.out.println("Remove button clicked, but item associated with this cell is null.");
                     }
@@ -157,7 +147,7 @@ public class ShoppingCartController {
     void handleClearCart(ActionEvent event) {
         System.out.println("Clear Cart clicked.");
         cartManager.clearCart();
-        // ListChangeListener sẽ tự động gọi updateSubtotal và cập nhật placeholder
+        
     }
 
     @FXML

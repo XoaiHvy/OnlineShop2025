@@ -1,7 +1,6 @@
-// File: src/controller/LoginController.java
 package controller;
 
-import Connect.DBConnection; // Import nếu bạn định dùng sau này
+import Connect.DBConnection; 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -16,18 +15,17 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;       // Import cho loginFormVBox
+import javafx.scene.layout.VBox;      
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.User; // Import User model nếu bạn sẽ dùng UserSession
-import util.UserSession; // Import UserSession nếu bạn sẽ dùng
+import model.User; 
+import util.UserSession; 
 
 import java.io.IOException;
 import java.net.URL;
-// Các import cho SQL nếu bạn sẽ chuyển sang DB authentication
 // import java.sql.Connection;
 // import java.sql.PreparedStatement;
 // import java.sql.ResultSet;
@@ -37,13 +35,13 @@ import java.net.URL;
 public class LoginController {
 
     @FXML
-    private AnchorPane rootPane; // Đảm bảo fx:id="rootPane" có trong Login.fxml
+    private AnchorPane rootPane; 
 
     @FXML
-    private MediaView loginBackgroundVideoView; // fx:id cho video nền
+    private MediaView loginBackgroundVideoView; 
 
     @FXML
-    private VBox loginFormVBox; // fx:id cho VBox chứa form (cho animation)
+    private VBox loginFormVBox; 
 
     @FXML
     private TextField usernameField;
@@ -61,7 +59,7 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
-    private Button googleLoginButton; // Giữ lại nếu FXML mới của bạn vẫn có nút này
+    private Button googleLoginButton; 
 
     @FXML
     private Hyperlink signUpLink;
@@ -76,12 +74,8 @@ public class LoginController {
         }
         initializeLoginBackgroundVideo();
 
-        // Áp dụng animation xuất hiện cho form bằng JavaFX
-        // Nếu bạn đã dùng animation CSS "@keyframes formAppear" cho ".glass-login-form",
-        // thì comment out hoặc xóa đoạn code này để tránh xung đột. Chọn MỘT cách.
         applyLoginFormAppearAnimation();
 
-        // --- BINDING KÍCH THƯỚC MEDIAVIEW VỚI ROOTPANE ---
         if (loginBackgroundVideoView != null && rootPane != null) {
             loginBackgroundVideoView.fitWidthProperty().bind(rootPane.widthProperty());
             loginBackgroundVideoView.fitHeightProperty().bind(rootPane.heightProperty());
@@ -89,7 +83,7 @@ public class LoginController {
         } else {
             System.err.println("Cannot bind MediaView size: rootPane or loginBackgroundVideoView is null. Check FXML fx:ids.");
         }
-        // --- KẾT THÚC BINDING ---
+  
     }
 
     private void initializeLoginBackgroundVideo() {
@@ -98,7 +92,7 @@ public class LoginController {
             return;
         }
         try {
-            String videoResourcePath = "/images/glass_login_video_bg.mp4"; // Đảm bảo tên tệp đúng
+            String videoResourcePath = "/images/glass_login_video_bg.mp4"; 
             URL videoUrl = getClass().getResource(videoResourcePath);
 
             if (videoUrl == null) {
