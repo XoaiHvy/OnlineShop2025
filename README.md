@@ -14,7 +14,7 @@ An Object-Oriented JavaFX application that simulates a modern e-commerce desktop
 
 ## ⚙ Technologies Used
 
-- **Java 17**
+- **Java 22.0.2**
 - **JavaFX** (UI with FXML & SceneBuilder)
 - **MySQL** (JDBC for database)
 - **JFreeChart** (for charts and analytics)
