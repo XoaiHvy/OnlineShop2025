@@ -30,7 +30,7 @@ src/
 ├── view/              # FXML UI files
 ├── Connect/           # Database connection (DBConnection.java)
 └── Main.java          # Application entry point
-
+```
 🔧 Setup Instructions
 Install Requirements:
 
@@ -60,8 +60,10 @@ DEMO ACCOUNT
 Username: admin
 Password: 123
 
-📌 Notes
+Notes
 Currently supports only basic admin/customer functions.
 
-Payment processing, delivery system, and security enhancements are not implemented yet.
+Payment processing, delivery system, and security enhancements are not implemented yet. 
 
+!!! LINK MY YOUTUBE:  https://youtu.be/vM9qQWqIPpI
+ 
